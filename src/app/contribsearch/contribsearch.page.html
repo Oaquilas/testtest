@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar class="ion-text-center"  color="gklispay">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title style="color: white;">Liste des contribuables</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!-- content entete de l'app-->
+ <ion-card button (click)="showDetails(i)" *ngFor="let contrib of contribNina; let i = index" style="border: 1px solid;">
+  <ion-item class="bg">    
+    <ion-thumbnail slot="end">
+      <img src="../assets/logobko.png">
+    </ion-thumbnail>
+  <div class="my-container-label">
+    <ion-label class="my-label-title textstyle"><b>{{ contrib.identification.raisonSociale}}</b></ion-label>
+    <ion-label class="my-label-title textstyle"><b>{{ contrib.contact.prenoms|lowercase}}--{{contrib.contact.nom|lowercase }}</b></ion-label>
+    <ion-label class="my-label-title textstyle">{{ contrib.localisation.zone |lowercase }}--{{ contrib.localisation.secteur |lowercase }}</ion-label>
+    <ion-label class="my-label-title textstyle">{{ contrib.contact.fonction |lowercase}}</ion-label>
+    <ion-label class="my-label-title textstyle">{{ contrib.contact.telephonel }} </ion-label>
+  </div>
+  </ion-item>
+</ion-card>
+<!--end content entête-->
+</ion-content>
+ <!--start footer-->
+ <ion-footer class="ion-text-center">
+  <!--start footer toolbar-->
+  <ion-toolbar color="gklispay">  
+     <ion-text>&copy;2020 K'LISPAY BY NTA-TECHNOLOGIE</ion-text>
+  </ion-toolbar>
+  <!--end footer toolbar-->
+</ion-footer>
+<!--end footer-->

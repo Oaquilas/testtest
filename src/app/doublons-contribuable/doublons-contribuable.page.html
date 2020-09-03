@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title style="color: white;">Liste Contribuable</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item *ngFor="let model of listDoublonsContrbi;let i=index" (click)="selectElement(i)">
+    {{model.rsoc}}<br/>
+    {{model.secteur}}<br/>
+    {{model.zone}}<br/>
+    {{model.nina}}<br/>
+    {{model.rsoc}}<br/>
+    {{model.klpnum}}<br/>
+    </ion-item>
+    <div class="btncenter">
+
+    <ion-button (click)="returnEnrolement()"  shape="round" >AUCUN</ion-button>
+    <ion-button shape="round" >SELECTIONNER</ion-button>
+  </div>
+</ion-content>

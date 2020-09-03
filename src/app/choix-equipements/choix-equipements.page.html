@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center" color="gklispay">
+    <ion-title style="color: white;">CHOIX EQUIPEMENTS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="resteChoix">
+  <ion-item class="otp">
+    <ion-icon slot="start" name="construct" size="large"></ion-icon>
+    <ion-label position="floating">CHOISIR UN EQUIPEMENT</ion-label>
+    <ion-select placeholder="Selectionner un equipement" [(ngModel)]="equipementChoisi1.libl">
+      <ion-select-option value="{{list}}" *ngFor="let list of listStringEquipements">{{list}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+    <ion-item class="otp">
+      <ion-icon slot="start" name="man" size="large"></ion-icon>
+      <ion-label position="floating">SELECTIONNEZ UN STATUT</ion-label>
+    <ion-select placeholder="Selectionner un statut" [(ngModel)]="equipementChoisi1.status">
+      <ion-select-option value="{{status}}" *ngFor="let status of listStringStatusEquipement">{{status}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+
+    <ion-grid>
+      
+      <ion-row>
+        <ion-col size="5" class="ion-text-center">
+
+         <div style="border: 1px solid; border-radius: 10px;">
+          <ion-icon slot="start" name="pencil" size="large"></ion-icon>
+          <label>Contrat</label>&nbsp;&nbsp;
+          <ion-checkbox color="primary" checked="true"></ion-checkbox>
+         </div>  
+        </ion-col>  
+        <ion-col size="7">
+            <ion-item class="otp">
+              <ion-label position="floating">
+                Numero
+              </ion-label>
+                <ion-input placeholder="Entrer le N°"> 
+                </ion-input>
+            </ion-item>
+        </ion-col> 
+      </ion-row>
+    </ion-grid>
+
+    <ion-item class="otp">
+    <ion-icon slot="start" name="home" size="large"></ion-icon>
+    <ion-label position="floating">
+      N°MAIRIE
+    </ion-label>
+      <ion-input [(ngModel)]="equipementChoisi1.numeroMairie" placeholder="Entrer le N° de la mairie">   
+    </ion-input>
+
+    </ion-item>
+
+    
+  
+
+
+
+    <ion-item class="otp">
+      <ion-icon slot="start" name="calculator" size="large"></ion-icon>
+      <ion-label position="floating">
+        PRECISION
+      </ion-label>
+      <ion-select placeholder="Selectionner une précision" [(ngModel)]="equipementChoisi1.precision">
+        <ion-select-option value="{{status}}" *ngFor="let status of listStringPrecision">{{status}}</ion-select-option>
+      </ion-select>
+      <!--ion-input [(ngModel)]="equipementChoisi1.precision" type="number" placeholder="Entrer la precision en m²"></ion-input!-->
+      </ion-item> 
+   <div class="ion-text-center">
+    <ion-button  shape="round" name="ajouterEquip" (click)="returnPageEnrol()" >
+      <ion-icon slot="start" name="add"></ion-icon>&nbsp;Ajouter</ion-button>
+    <ion-button  shape="round" name="annulerEquip" (click)="retourEnrolement()" >
+      <ion-icon slot="start" name="refresh"></ion-icon>&nbsp;Annuler</ion-button>
+   </div>
+ </div>
+
+</ion-content>

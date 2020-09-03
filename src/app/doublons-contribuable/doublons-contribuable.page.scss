@@ -1,0 +1,61 @@
+ion-card-header{
+    background-color: RGB(0,100,100);
+    color: white;
+}
+
+ion-card-title
+{
+    color: white;
+}
+
+ion-card-title.ion-item
+{
+    background:rgb(0,100,100);
+}
+ion-item
+{
+   --background:RGB(144,238,144) ;
+}
+ion-content
+{
+    --background:RGB(144,238,144) ;
+}
+
+ion-card-content
+{
+    --background:rgb(144,238,144) ;
+}
+.toolbar
+{
+    background:rgb(0,100,100);
+    color: white;
+}
+/*ion-fab-button
+{
+ --background:RGB(0,100,100);
+}*/
+ion-icon {
+     font-size: 40px;  
+}
+/*
+.itemicon
+{
+    --background:rgb(0,100,100);
+}
+.titleicon
+{
+    background:rgb(0,100,100);
+    color:rgb(0,100,100);
+}*/
+ion-button
+{
+    --background:rgb(0,100,100);   
+}
+ion-toolbar
+{
+    --background:rgb(0,100,100);
+}
+.btncenter
+{
+    text-align: center;
+}

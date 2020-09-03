@@ -1,0 +1,81 @@
+<!--start header-->
+<ion-header translucent>
+  <!--start toolbar-->
+    <ion-toolbar  class="ion-text-center" color="gklispay">
+      <ion-title style="color: white;">
+        <!-- 
+          <ion-card color="rklispay">
+          <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide>
+              <h1 class="txt">K'LISPAY</h1>
+            </ion-slide>
+            <ion-slide>
+              <h1 class="txte"> C'EST SIMPLE</h1>
+            </ion-slide>
+            <ion-slide>
+              <h1 class="txte"> C'EST SECURISE </h1>
+            </ion-slide>
+          </ion-slides>     
+        </ion-card>   
+        -->
+        RECOUVREMENT
+      </ion-title>
+    </ion-toolbar>
+  <!--end toolbar-->
+
+  </ion-header>
+  <!--end header-->
+  
+  <!--/////////////////////////////////////////////////////////////////////-->
+  
+  <!--start content-->
+  <ion-content fullscreen translucent>  
+   <!-- content entete de l'app-->
+   <ion-card style="border: 1px solid;">
+    <img src="assets/logoklp.jpg" />
+    <ion-card-content>
+      <ion-text> Scannez le QRcode sur la carte KLISPAY pour identifier un contribuable ou lancez une recherche personnalisée. </ion-text>
+
+      <ion-button color="gklispay" expand="full" shape="round" (click)="scan()">
+        <ion-icon slot="start" name="scan"></ion-icon>
+        Scanner</ion-button>
+      <ion-button color="gklispay" expand="full" shape="round" (click)="recherche()">
+        <ion-icon slot="start" name="search"></ion-icon>
+        Rechercher</ion-button>
+        <ion-button color="gklispay" expand="full" shape="round" >
+          <ion-icon slot="start" name="checkmark-circle"></ion-icon>
+          Verifier un Paiement</ion-button>
+      <ion-button color="gklispay" expand="full" shape="round" (click)="quit()">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+        Quitter</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-item *ngIf="dataScan">
+    <ion-label position="stacked">Format du Scan</ion-label>
+    <ion-input [value]="dataScan.format" readonly></ion-input>
+  </ion-item>
+  <ion-item *ngIf="dataScan">
+    <ion-label position="stacked">Info scanné</ion-label>
+    <ion-input [value]="dataScan.text" readonly></ion-input>
+  </ion-item>
+  <br>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="justify-align-center">
+        <ion-text class="txt">&copy;2020</ion-text>
+        <ion-img src="assets/klplogo.jpg" class="inline-b"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>
+  <!--end content-->
+  <!--//////////////////////////////////////////////////////////////////////-->
+  <!--start footer-->
+  <ion-footer class="ion-text-center">
+    <!--start footer toolbar-->
+    <ion-toolbar color="gklispay"> 
+       <ion-text>&copy;2020 K'LISPAY BY NTA-TECHNOLOGIE</ion-text> 
+    </ion-toolbar>
+    <!--end footer toolbar-->
+  </ion-footer>
+  <!--end footer-->

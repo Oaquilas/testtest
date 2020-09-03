@@ -1,0 +1,132 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+.my-container-label{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    
+     .my-label-title{
+         font-weight: 100;
+         font-size: 14px !important;
+     } 
+}
+
+.my-label-title-1{
+    font-weight: 100;
+    font-size: 1.4em !important;
+} 
+
+/****/
+
+ion-content{
+  //  --background: #1D976C;
+   // --background-image: url(../src/assets/logonta.jpg);
+   /* fallback for old browsers */
+  //  --background: -webkit-linear-gradient(to top, #93F9B9 51%, #1D976C 100%);
+   /* Chrome 10–25, Safari 5.1–6 */
+  //  --background: linear-gradient(to top, #93F9B9 51%, #1D976C 100%);
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
+   }
+   .otp{
+   // --background: -webkit-linear-gradient(to top, #93F9B9 51%, #1D976C 100%);
+   }
+//ion-content {
+ //   --ion-background-color: transparent;
+//}
+
+   // class
+   .bg{
+   // --background: #1D976C;
+    /* fallback for old browsers */
+    // --background: -webkit-linear-gradient(to left, #4AC29A 0%, #BDFFF3 51%, #4AC29A 100%);
+    /* Chrome 10–25, Safari 5.1–6 */
+    // --background: linear-gradient(to left,#4AC29A 0%, #BDFFF3 51%, #4AC29A 100%);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   }
+   .bgi{
+  //  --background: rgba(255, 255, 255, 0.6);
+   }
+
+
+   .my-orange-modal-css .modal-wrapper {
+    height: 55%;
+    top: 25%;
+    position: absolute; 
+    display: block;  
+ }
+ .my-choixEquiment-css .modal-wrapper {
+  height: 65%;
+  top: 18%;
+  // position: absolute; 
+ // display: block;  
+}
+   
+  
+//
+   .bga{
+   // --background: #1D976C;
+    /* fallback for old browsers */
+  //   --background: -webkit-linear-gradient(to left,  #50C9C3 0%, #96DEDA 51%, #50C9C3 100%);
+    /* Chrome 10–25, Safari 5.1–6 */
+   //  --background: linear-gradient(to left, #50C9C3 0%, #96DEDA 51%, #50C9C3 100%);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   }
+   .txt {
+    font-family:  Roboto;
+    font-variant: normal;   
+    }
+
+   .txte{
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       font-variant: small-caps; 
+   }
+
+   .justify-center {
+    display: flex;
+    justify-content: center;
+  }
+  .justify-align-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .inline-b {
+    display: inline-block;
+    width: 80px;
+    margin-left: 5px;
+  }
+  
+  .my-alert-class {
+    --background: #e5e5e5;
+  }
+
+  .mys{
+    --border: 1px solid !important;
+  }
+  

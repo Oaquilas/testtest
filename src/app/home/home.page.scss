@@ -1,0 +1,64 @@
+
+.span-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+/*.my-btn{
+      text-align: center;
+    --background: rgb(190, 22, 34);
+} */
+
+
+  .my-content {
+    position: relative;
+    left: 0;
+    right: 0;
+    background: #006633;
+    margin: 45% auto;
+    overflow-y: hidden;
+  }
+
+/* ion-toolbar{
+    --background: #006633;
+  }  
+  */
+
+  #my-number-div{
+    text-align: center;
+    
+  }
+
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+.my-text{
+  color: #BE1622;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2.5em;
+}
+
+#con {
+   min-height: 100% !important;
+   position: relative;
+   //background: #006633;
+}
+#content {
+   height: 100%; /* Changed this height */
+   padding-bottom:10px;
+  // background: #006633;
+}
+
+.titre{
+ 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+} 

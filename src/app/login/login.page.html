@@ -1,0 +1,63 @@
+
+<!--
+  <ion-header>
+  <ion-toolbar color="gklispay" class="ion-text-center">
+    <ion-title>LOGIN</ion-title>
+  </ion-toolbar>
+</ion-header>
+-->
+<ion-content  >
+  <img src="assets/image/logoklis.jpeg"/>
+  <ion-card class="bg" style="border: 1px solid;">
+    <ion-card-title>
+      <h1 class="txte ion-text-center">CONNEXION</h1>
+    </ion-card-title>
+    <ion-card-content class="bg">
+        <ion-item class="bg bgi">
+        <ion-label position="floating">Identifiant</ion-label>
+        <ion-input [(ngModel)]="username" color="gklispay" placeholder="Entrer votre identifiant">
+          <ion-icon slot="start" name="person"></ion-icon>
+        </ion-input>
+      </ion-item>
+  
+      <ion-item class="bg bgi">
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input [(ngModel)]="password" type="password" color="gklispay" placeholder="Entrer votre Mot de passe">
+          <ion-icon slot="start" name="lock-closed"></ion-icon>
+        </ion-input>
+      </ion-item>
+      <div class="ion-text-center">
+        <ion-button (click)="authentifier()"  expand="full" color="rklispay">Se Connecter</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <div class="ion-text-center">
+    <ion-text>POWERED BY NTA-TECHNOLOGIE</ion-text> 
+  </div>
+ 
+ <!--
+   <ion-button color="rklispay" size="small"  (click)="temApi()">
+    <ion-icon slot="start" name="add"></ion-icon>
+    Inscription TEM</ion-button> 
+    <ion-button color="rklispay" size="small"  (click)="tester1()">
+      <ion-icon slot="start" name="add"></ion-icon>
+       TEM</ion-button> 
+       <ion-button color="rklispay" size="small"  (click)="initPaiement()">
+        <ion-icon slot="start" name="add"></ion-icon> initier Paiement</ion-button> 
+         <ion-button color="rklispay" size="small"  (click)="confirmPaiement()">
+          <ion-icon slot="start" name="add"></ion-icon>
+           Confirmer Paiement</ion-button>
+ --> 
+ 
+   <!--ion-button (click)="service.test()" class="buttonlog" expand="full" shape="round">SE sksd</ion-button-->
+  </ion-content>
+ <!--start footer-->
+ <!--
+   <ion-footer class="ion-text-center">
+  <ion-toolbar color="gklispay"> 
+     <ion-text>&copy;2020 K'LISPAY BY NTA-TECHNOLOGIE</ion-text> 
+  </ion-toolbar>
+</ion-footer>
+
+<!--end footer-->

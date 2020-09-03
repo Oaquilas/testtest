@@ -1,0 +1,378 @@
+
+<ion-header >
+  <ion-toolbar color="gklispay" class="ion-text-center">
+    <ion-title style="color: white;">ENRÔLEMENT</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <!--Identification -->
+  <ion-card class="bg" >
+  <div class="bg">
+    <ion-card-header tappable (click)="tappIdentification()" color="gklispay">
+     
+      <ion-card-title color="rklispay">
+        <ion-icon name="person-add" class="myicon"></ion-icon>&nbsp;IDENTIFICATION</ion-card-title>  
+    
+  </ion-card-header>
+</div>
+
+
+  <ion-card-content *ngIf="contenu_identification" class="tester">
+    <ion-item class="bg">
+      <ion-label position="floating">KLPNUMP</ion-label>
+     <ion-input [(ngModel)]="data_contact.klpnum" required="true"  inputmode="text"></ion-input>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="data_identification.status">
+      <ion-item class="bg">
+        
+        <ion-label >PERSONNE PHYSIQUE</ion-label>
+        <ion-radio slot="start" value="PERSONNE PHYSIQUE" ></ion-radio>
+      </ion-item>
+      <ion-item class="bg">
+        <ion-label>PERSONNE MORALE</ion-label>
+        <ion-radio slot="start" value="PERSONNE MORALE" ></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  <ion-item  class="bg">
+    <ion-label position="floating">RAISON SOCIALE</ion-label>
+    <ion-input [(ngModel)]="data_identification.raison_sociale" type="text" inputmode="text" ></ion-input>
+  </ion-item>
+  <ion-item class="bg">
+    <ion-label position="floating">NIF</ion-label>
+    <ion-input [(ngModel)]="data_identification.nif" type="text" inputmode="text" ></ion-input>
+  </ion-item>
+
+
+</ion-card-content>
+</ion-card>
+
+  <!--Localisation -->
+
+  <ion-card>
+    <ion-card-header tappable (click)="tappLocalisation()" color="gklispay">
+      <ion-card-title>
+        <ion-icon name="location" class="myicon"></ion-icon>&nbsp;LOCALISATION</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="contenu_localisation" class="tester">
+     <!--    --> 
+  <ion-item class="bg">
+    <ion-label position="floating">ZONE</ion-label>
+   <ion-input value="{{data_localisation.zone}}"  ></ion-input>
+  </ion-item>
+  <ion-item class="bg">
+    <ion-label position="floating">SECTEUR</ion-label>
+    <ion-input value="{{data_localisation.secteur}}" ></ion-input>
+  <!--ion-select placeholder="Choisir" [(ngModel)]="data_localisation.secteur" cancelText="Annuler" okText="Ok">
+    <ion-select-option *ngFor="let secteur of possibleSecteurAgent" value="{{secteur}}">{{secteur}}</ion-select-option>
+
+  </ion-select!-->
+</ion-item>
+  <ion-item class="bg">
+    <ion-label position="floating">GEOLOCALISATION</ion-label>
+   
+    <ion-input value="{{data_contact.lagitude}} {{data_contact.longitude}}" readOnly></ion-input>
+
+  </ion-item>
+</ion-card-content>
+</ion-card>
+
+
+<!-- Contact  -->
+ 
+  <ion-card>
+    <ion-card-header tappable (click)="tappContact()" color="gklispay">
+      <ion-card-title>
+         
+       <ion-label>
+        <ion-icon name="call" class="myicon"></ion-icon>&nbsp;CONTACT</ion-label>
+
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="contenu_contact" class="tester">
+      <ion-label >
+        <img *ngIf="retrievedImage" [src]="retrievedImage"/>
+      </ion-label>
+  <ion-item class="bg">
+    <ion-label position="floating">PRENOMS</ion-label>
+   <ion-input [(ngModel)]="data_contact.prenoms" required="true" inputmode="text" ></ion-input>
+  </ion-item>
+
+  <ion-item class="bg">
+    <ion-label position="floating">NOM</ion-label>
+   <ion-input [(ngModel)]="data_contact.nom" required="true"  inputmode="text"></ion-input>
+  </ion-item>
+
+
+  <ion-item class="bg">
+    <ion-label position="floating">NINA</ion-label>
+   <ion-input [(ngModel)]="data_contact.nina" required="true"  inputmode="text"></ion-input>
+  </ion-item>
+  <ion-item class="bg">
+    <ion-label position="floating">TELEPHONE</ion-label>
+   <ion-input type="number" [(ngModel)]="data_contact.telephone"> </ion-input>
+  </ion-item>
+  <ion-item class="bg">
+    <ion-label>AGE</ion-label>
+    <ion-select placeholder="Choisir" [(ngModel)]="data_contact.age" cancelText="Annuler" okText="Ok">
+      <ion-select-option *ngFor="let age of ages" value="{{age}}">{{age}}</ion-select-option>
+  
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="bg">
+    <ion-label>FONCTION</ion-label>
+    <ion-select placeholder="Choisir" [(ngModel)]="data_contact.fonction" cancelText="Annuler" okText="Ok">
+      <ion-select-option  *ngFor="let fct of fonctions" value="{{fct}}">{{fct}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" color="gklispay">
+    <ion-fab-button color="gklispay" (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  </ion-card-content>
+ </ion-card>
+
+ 
+  <!--Activité -->
+
+  <ion-card>
+    <ion-card-header tappable (click)="tappActivite()" color="gklispay">
+      <ion-card-title>
+        <ion-icon name="construct" class="myicon"></ion-icon>&nbsp;ACTIVITE</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="contenu_activite" class="tester">
+  <ion-item class="bg">
+    <ion-label>ACTIVITE </ion-label>
+    <ion-select placeholder="Choisir"  [(ngModel)]="data_enroller.activite" cancelText="Annuler" okText="Ok">
+      <ion-select-option *ngFor="let act of activites" value="{{act}}">{{act}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="bg">
+    <ion-label>NATURE </ion-label>
+    <ion-select placeholder="Choisir"  [(ngModel)]="data_enroller.nature" cancelText="Annuler" okText="Ok">
+      <ion-select-option *ngFor="let nat of natures" value="{{nat}}">{{nat}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  </ion-card-content>
+  </ion-card>
+
+  <!--EQUIPEMENTS-->
+
+  <ion-card class="bg">
+    <ion-card-header tappable (click)="tappEquipement()" color="gklispay">
+      <ion-card-title>
+        <ion-icon name="home" class="myicon"></ion-icon>&nbsp;EQUIPEMENTS</ion-card-title>
+    </ion-card-header>
+      
+        <ion-card-content *ngIf="contenu_equipement" class="bg">
+          <ion-grid >
+            <ion-row align-items-start >
+              <ion-item-divider color="dark">
+                <ion-col size="4">
+                  <ion-label style="color: white;">Equipement</ion-label>
+                </ion-col>
+                <ion-col >
+                  <ion-label style="color: white;">N°Mairie</ion-label>
+                </ion-col>
+                <ion-col >
+                 <ion-label style="color: white;">Précisions</ion-label>
+                </ion-col>
+                <ion-col >
+                  <ion-label style="color: white;">Statut</ion-label>
+                 </ion-col>
+              </ion-item-divider>
+            </ion-row>
+            <ion-row *ngFor="let equip of data_equipements ; let i=index" (click)="supprimerEquipement(i)">
+              <ion-item-divider color="gklispay">
+                <ion-col siize="6">
+                  <!--ion-label>{{equip}}</ion-label!-->
+                    <ion-label style="color: white;">{{equip.libl}}</ion-label>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-label style="color: white;">
+                   {{equip.numeroMairie}}
+                    <!--ion-input ></ion-input-->
+                  </ion-label>
+                </ion-col>
+   
+                <ion-col size="2">
+                 <ion-label style="color: white;">
+                   {{equip.precision}}
+                 </ion-label>
+               </ion-col>
+               <ion-col size="2">
+               <ion-label style="color: white;">
+                 {{equip.status}}
+               </ion-label>
+               </ion-col>
+              </ion-item-divider>
+            </ion-row>
+          </ion-grid>
+          <div class="ion-text-center">
+            <ion-button slot="end" size="small" color="rklispay" (click)="navigateToNewEquipement()">
+              <ion-icon name="add"></ion-icon>&nbsp;Ajouter</ion-button>
+          </div>
+        </ion-card-content>
+  </ion-card>
+
+
+  <!--TAXES-->
+ 
+
+  <ion-card class="bg">
+    <ion-card-header tappable (click)="tappTaxes()" color="gklispay">
+      <ion-card-title>
+        <ion-icon name="cash" class="myicon"></ion-icon>&nbsp;TAXES</ion-card-title>
+
+    </ion-card-header>
+      
+        <ion-card-content *ngIf="contenu_taxes" class="bg">
+          
+          <ion-grid>
+            <ion-row >
+              <ion-item-divider color="dark">
+                <ion-col size="5">
+                  <ion-label style="color: white;">Taxes</ion-label>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-label style="color: white;">Fréquence</ion-label>
+                </ion-col>
+                <ion-col size="3">
+                 <ion-label style="color: white;">Montant</ion-label>
+                </ion-col>
+              </ion-item-divider>
+            </ion-row>
+            <ion-row *ngFor="let tax of data_taxes">
+              <ion-item-divider color="gklispay">
+                <ion-col size="6">
+                  <ion-label style="color: white;">{{tax.libl}} </ion-label>
+                 </ion-col>
+                 <ion-col size="3">
+                   <ion-label style="color: white;">
+                     {{tax.frequence}}
+                   </ion-label>
+                 </ion-col>
+    
+                 <ion-col >
+                  <ion-input type="number" [(ngModel)]="tax.montant">
+                   
+                  </ion-input>
+                </ion-col>
+              </ion-item-divider>
+            </ion-row>
+
+          </ion-grid>
+          <div class="ion-text-center">
+            <ion-button size="small" color="rklispay" shape="round" (click)="calculerTaxes()" >
+              <ion-icon name="add"></ion-icon>&nbsp;REGENERER
+            </ion-button>
+          </div>
+        </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
+  <!-- PAIEMENTS PREFERES-->
+  <ion-card class="bg">
+    <ion-card-header tappable (click)="tappPaiement()" color="gklispay">
+      <ion-card-title>
+        <ion-icon name="card" class="myicon"></ion-icon>&nbsp;MODE DE PAIEMENT</ion-card-title>
+    </ion-card-header>
+      
+        <ion-card-content *ngIf="contenu_paiement_prefere" class="bg">
+
+     <ion-item class="bg">
+
+      <ion-label>MOYEN </ion-label>
+      <ion-select placeholder="Choisir" [(ngModel)]="data_enroller.moyen_paiement">
+        <ion-select-option *ngFor="let moyen of moyen_paiements" value="{{moyen}}" >{{moyen}}</ion-select-option>
+      
+      </ion-select>
+
+     </ion-item>
+      
+
+     <ion-item class="bg">
+      <ion-label position="floating">REF</ion-label>
+     <ion-input type="number" [(ngModel)]="data_enroller.ref_paiement_mobile" ></ion-input>
+    </ion-item>
+
+   
+    <ion-item class="bg">
+      <ion-label>BANQUE </ion-label>
+      <ion-select placeholder="Choisir" [(ngModel)]="data_enroller.banque_paiement">
+        <ion-select-option *ngFor="let banque of banques" value="{{banque}}">{{banque}}
+        </ion-select-option>
+      </ion-select>
+ 
+     </ion-item>
+ 
+     <ion-item class="bg">
+       <ion-label position="floating"> REF  </ion-label>
+       <ion-input [(ngModel)]="data_enroller.ref_banque"></ion-input>
+     </ion-item>
+     
+      
+      </ion-card-content>
+
+  </ion-card>
+  <ion-card style="border: 1px solid;">
+    <div class="btncenter">
+
+      <ion-button (click)="enrollerContribuable()" name="enroler" size="small"  class="buttonclass" color="rklispay">
+        <ion-icon slot="start" name="person"></ion-icon>ENROLER</ion-button>
+      <ion-button (click)="imprimerContribuable()" name="imprimer" size="small"  class="buttonclass" color="rklispay">
+        <ion-icon name="print"></ion-icon>&nbsp;IMPRIMER</ion-button>
+      <ion-button (click)="annulerContribuable()" name="annulercontrib" size="small" class="buttonclass" color="rklispay">
+        <ion-icon name="refresh"></ion-icon> ANNULER</ion-button>
+  </div>
+  
+  <div class="btncenter">
+  
+          <ion-button (click)="chercherContrib()" name="rechercherContrib" size="small"  class="buttonclass" color="rklispay">
+            <ion-icon name="search"></ion-icon>&nbsp;RECHERCHER</ion-button>
+            <ion-button size="small" color="rklispay" class="buttonclass" (click)="scanklpnump()">
+              <ion-icon slot="start" name="scan"></ion-icon>
+              Scanner</ion-button>
+              <ion-button (click)="retournerContribuable()" size="small" color="rklispay" class="buttonclass">
+                <ion-icon name="log-out"></ion-icon>&nbsp;RETOURNER</ion-button>
+            <!--ion-button (click)="chercherContrib()">CLICKER0</ion-button>
+            <ion-button (click)="testload()">CLICKER1</ion-button!-->
+  
+  </div>
+  </ion-card>
+
+<div class="btncenter">
+ 
+<!--<ion-button (click)="testprinter()" name="testerprinter" shape="round" class="buttonclass">Tester</ion-button>
+<ion-button (click)=" printQrcode1()" name="testerprinter" shape="round" class="buttonclass">Tester1</ion-button>!-->
+
+<!--ion-button (click)="printQrcode1()">QRCODE</ion-button!-->
+</div >
+
+</ion-content>
+<!--//////////////////////////-->
+ <!--start footer-->
+ <ion-footer class="ion-text-center">
+  <!--start footer toolbar-->
+  <ion-toolbar color="gklispay"> 
+    <div *ngIf="service.afficherBluetooth">
+      <ion-button color="warning" (click)="researchBluetooth()" *ngIf="statusResearchBluetooth">
+        <ion-icon slot="start" name="bluetooth"></ion-icon>&nbsp;Chercher Bluetooth </ion-button>
+       <ion-card color="light" *ngFor="let ele of nameBluetooth; let i=index" (click)="connectBluetooth(i)">
+         {{ele.name}}
+       </ion-card>
+     </div> 
+  </ion-toolbar>
+  <!--end footer toolbar-->
+</ion-footer>
+<!--end footer-->

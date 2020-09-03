@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,WAAW,CAAA,gBAAC;EACZ,aAAa,CAAA,0DAAC;CACd",
+    "sources": [
+        "contribdetail.page.scss"
+    ],
+    "names": [],
+    "file": "contribdetail.page.css"
+}

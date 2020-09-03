@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,WAAW,CAAA,gBAAC;EACZ,aAAa,CAAA,0DAAC;CACd",
+    "sources": [
+        "contribsearch.page.scss"
+    ],
+    "names": [],
+    "file": "contribsearch.page.css"
+}

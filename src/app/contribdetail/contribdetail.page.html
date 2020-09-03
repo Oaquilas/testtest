@@ -1,0 +1,313 @@
+<!--start header-->
+<ion-header translucent>
+  <!--start toolbar-->
+    <ion-toolbar  class="ion-text-center" color="gklispay">
+      <ion-title>
+       <!--
+          <ion-card color="rklispay">
+          <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide>
+              <h1 class="txt">K'LISPAY</h1>
+            </ion-slide>
+            <ion-slide>
+              <h1 class="txte"> C'EST SIMPLE</h1>
+            </ion-slide>
+            <ion-slide>
+              <h1 class="txte"> C'EST SECURISE </h1>
+            </ion-slide>
+          </ion-slides>     
+        </ion-card>   
+       -->
+      </ion-title>
+  
+      <ion-chip style="background-color: #03DAC5;" (click)="openModalAgent()">
+        <!-- (click)="openModalAgent()"  -->
+        <ion-label class="my-label-title">
+         {{ agentUsername|lowercase }}-{{agentZone|lowercase}}-{{agentSecteur|lowercase}}
+        </ion-label>
+    </ion-chip>
+    </ion-toolbar>
+  <!--end toolbar-->
+  
+  <!--Toolbar pour la recherche  et le scan -->
+    <ion-toolbar color="gklispay">
+      <ion-chip style="background-color: #03DAC5;">
+        <ion-icon name="person"></ion-icon>
+       <ion-label button class="my-label-title" (click)="modifierIdContrib()">{{idContrib |lowercase}}</ion-label>
+     </ion-chip>
+     <ion-button slot="end" size="small" color="rklispay" (click)="recherche()">
+      <ion-icon slot="start" name="search"></ion-icon>
+      Chercher</ion-button>
+     <ion-button  slot="end" size="small" color="rklispay" (click)="scan()">
+      <ion-icon slot="start" name="scan"></ion-icon> 
+      Scan</ion-button>
+  </ion-toolbar>
+  <!--Toolbar pour la recherche  et le scan -->
+  </ion-header>
+  <!--end header-->
+  
+  <!--/////////////////////////////////////////////////////////////////////-->
+  <!--start content-->
+  <ion-content fullscreen translucent>  
+   <!-- content entete de l'app-->
+  <ion-card>
+      <ion-item button class="bg" style="border: 1px solid;">
+        
+        <ion-thumbnail slot="end">
+          <img src="../assets/logobko.png" >
+        </ion-thumbnail>
+        
+      <div class="my-container-label">
+        <ion-label class="my-label-title textstyle"><b>{{ contribParams?.identification?.raisonSociale}}</b></ion-label>
+        <ion-label class="my-label-title textstyle">{{contribParams?.contact?.prenoms|lowercase}}-{{contribParams?.contact?.nom|lowercase}}</ion-label>
+        <ion-label class="my-label-title textstyle"> {{contribParams?.localisation?.zone|lowercase}}-{{contribParams?.localisation?.secteur|lowercase}}</ion-label>
+        <ion-label class="my-label-title textstyle">{{contribParams?.contact?.fonction |lowercase}}-{{this.contribPayment?.transactModelPayment?.transact?.modpay}}</ion-label>
+      </div>
+      </ion-item>
+  </ion-card>
+  <!--end content entête-->
+  <div id="con">   
+      <div id="content">      
+        <!--start toolbar-->
+   <!--mon toolbar pour voir les differents messages-->
+   <ion-card color="gklispay">
+    <ion-segment  [(ngModel)]="taxeType" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="paiement" layout="icon-start">
+        <ion-icon name="cash" style="color: white;"></ion-icon>
+        <ion-label style="color: white;">Paiement</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="histo" layout="icon-start">
+        <ion-icon name="reader" style="color: white;"></ion-icon>
+        <ion-label style="color: white;">Histo.</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="taxe" layout="icon-start">
+        <ion-icon name="wallet" style="color: white;"></ion-icon>
+        <ion-label style="color: white;">Taxes</ion-label>
+      </ion-segment-button>
+    </ion-segment> 
+  </ion-card>
+  <!--End toolbar-->
+  <!--contenue des onglets dans le toolbar-->
+    <div [ngSwitch]="taxeType">
+      <div *ngSwitchCase="'paiement'">
+         <!--contenue a afficher pour le cas paiement-->
+         <div>
+          <ion-list>
+            <div *ngFor="let echeance of contribPayment?.situationFiscale?.echfiscPaymentModels; let i= index">
+            <ion-card (click)="hideMe[i] = !hideMe[i]" style="border: 1px solid;">
+              <ion-item button class="bg">
+                <ion-badge color="warning" slot="end">{{ echeance.echfisc.mntecar}}</ion-badge>  
+                <ion-badge color="rklispay" slot="end" style="color: white;">
+                  {{ getTransEchFisc(i) }} 
+                </ion-badge>  
+                <div class="my-container-label">
+                  <ion-label class="my-label-title">{{ echeance.libl | uppercase}}</ion-label>  
+                </div>     
+              </ion-item>
+              
+              <div [hidden]="hideMe[i]">
+                <ion-item button  *ngFor="let detail of echeance.echfiscDPaymentModels;let j=index" class="bga">
+                  <ion-badge  color="light" slot="end">{{ detail.echfiscdet.mntecar }}</ion-badge>  
+                  <ion-badge  color="medium" slot="end">{{ getTransactEchfiscDetail(j,i) }}</ion-badge>  
+                    <div class="my-container-label">
+                       <ion-label class="my-label-title">{{ detail.libl |lowercase }}</ion-label>
+                    </div>     
+                 </ion-item>
+              </div>
+            </ion-card>
+          </div>    
+        </ion-list> 
+        </div>
+      </div>
+      <div *ngSwitchCase="'histo'">
+        <!--contenue a afficher pour le cas historique-->
+            <ion-list>
+              <ion-card>
+              <ion-item  button class="bg">
+                <ion-badge  color="rklispay" slot="end">2500</ion-badge>  
+                <div class="my-container-label">
+                  <ion-label class="my-label-title">ID transaction</ion-label>
+                  <ion-label class="my-label-title">06 Mars 2019</ion-label>
+                </div>     
+              </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-item button class="bg">
+                <ion-badge  color="rklispay" slot="end">3000</ion-badge>  
+                <div class="my-container-label">
+                  <ion-label class="my-label-title">ID transaction</ion-label>
+                  <ion-label class="my-label-title">10 Avril 2019</ion-label>
+                </div>     
+              </ion-item>
+            </ion-card>
+            </ion-list> 
+      </div>
+      <div *ngSwitchCase="'taxe'">
+        <!--contenue a afficher pour le cas taxe-->
+            <ion-list>
+              <ion-card>
+              <ion-item button class="bg">
+                <div class="my-container-label">
+                  <ion-label class="my-label-title">Loyer Mensuel</ion-label>
+                  <ion-label color="tertiary">Boutique 20m², Loi N°00215...</ion-label>          
+                </div>     
+              </ion-item>
+            </ion-card>
+            <ion-card>
+              <ion-item button class="bg">
+                <div class="my-container-label">
+                  <ion-label class="my-label-title">Taxe pollution teinturerie</ion-label>
+                  <ion-label color="tertiary">Teinturerie, Loi N°21025...</ion-label>
+                </div>     
+              </ion-item>
+            </ion-card>
+            </ion-list> 
+          </div>
+          <!--Par defaut on affiche la page   paiement-->
+          <div *ngSwitchDefault>
+            <ion-list>   
+              <div *ngFor="let echeance of contribPayment?.situationFiscale?.echfiscPaymentModels; let i= index">
+                <ion-card (click)="hideMe[i] = !hideMe[i]" style="border: 1px solid;">
+                   <ion-item button class="bg">
+                    <ion-badge color="warning" slot="end">{{ echeance.echfisc.mntecar}}</ion-badge>  
+                    <ion-badge color="rklispay" slot="end" style="color: white;">
+                      {{ getTransEchFisc(i) }} 
+    
+                    </ion-badge>  
+                    <div class="my-container-label">
+                      <ion-label class="my-label-title">{{ echeance.libl| uppercase}}</ion-label>  
+                    </div>     
+                  </ion-item>
+                  
+                  <div [hidden]="hideMe[i]">
+                    <ion-item button  *ngFor="let detail of echeance.echfiscDPaymentModels;let j=index" class="bga">
+                      <ion-badge  color="light" slot="end">{{ detail.echfiscdet.mntecar }}</ion-badge>  
+                      <ion-badge  color="medium" slot="end">{{ getTransactEchfiscDetail(j,i) }}</ion-badge>  
+                        <div class="my-container-label">
+                           <ion-label class="my-label-title">{{ detail.libl |lowercase }}</ion-label>
+                        </div>     
+                     </ion-item>
+                  </div>
+                </ion-card>
+              </div>
+            </ion-list> 
+          </div>
+      </div> 
+    </div>
+    <!--Partie solde contrib-->
+    <!--section de solde du contrib-->
+             
+              <ion-item color="gklispay" class="ion-text-center">
+                <ion-label  style="color: white;" >
+                  <ion-icon name="wallet" style="color: white;"></ion-icon>
+                  &nbsp; REDEVANCES</ion-label>
+              </ion-item>
+            
+  <ion-grid>
+    <ion-row style="border: 1px solid;">
+      <ion-col>
+        <ion-item class="bg">
+          <ion-button slot="end" size="large" color="warning">{{total}}</ion-button>
+         <ion-button  slot="end" size="large" color="rklispay" (click)="modifierMontant()" [disabled]="btnMontant">{{contribPayment?.transactModelPayment?.transact?.montant}}</ion-button> 
+          <div class="my-container-label">
+            <ion-label class="my-label-title">TOTAL:</ion-label>
+          </div>     
+        </ion-item>
+        <ion-item class="bg"> 
+         <ion-button  slot="end" size="large" color="dark">{{ solde }} </ion-button>
+          <div class="my-container-label">
+            <ion-label class="my-label-title">SOLDE:</ion-label>
+          </div>     
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+  <ion-grid>
+    <ion-row style="border: 1px solid;">
+      <ion-col size="7">
+        <!--mode de paiement preferé-->
+        <ion-item  button class="bg" (click)="getMode()" [disabled] ="btnMode">
+         <!--
+          <ion-label position="floating">Moyen prefere</ion-label>
+          <ion-select [value]="contribPayment?.transactModelPayment?.transact?.modpref" multiple="false" cancelText="Anuler" okText="Ok">
+              <ion-select-option button *ngFor="let mod of modePref" [value]="mod.name">{{mod.name}}</ion-select-option>
+          </ion-select>
+         --> 
+          
+        <ion-text>{{contribPayment?.transactModelPayment?.transact?.modpref}}</ion-text>
+      </ion-item>
+    <!--mode de paiement preferé-->
+      </ion-col>
+      <ion-col size="5">
+        <ion-item class="bg"> 
+          <div>
+          <ion-chip button color="dark" (click)="modifierNumTel()">
+            <ion-label class="my-label-title">
+              {{this.contribPayment?.transactModelPayment?.transact?.modpay}}
+          </ion-label>
+          </ion-chip>  
+        </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--Toolbar pour OTP -->
+  <ion-toolbar class="otp" *ngIf="divOtp == false" >
+    <ion-item class="otp">
+      <div style="border: 1px solid; border-radius: 12px;">
+        <ion-label position="floating">Code OTP</ion-label>
+        <ion-input type="password" id="otp" maxlength="6"></ion-input> 
+      </div> 
+    </ion-item>
+   <ion-button slot="start" size="large" color="rklispay" (click)="OTP()">
+    <ion-icon slot="start" name="qr-code"></ion-icon>
+    OTP</ion-button>
+</ion-toolbar>
+<!--Toolbar pour OTP -->
+
+  <ion-toolbar (click)="transHideMe = !transHideMe">
+    <ion-item button class="bga">
+      <ion-badge color="gklispay" slot="end">{{this.contribPayment?.transactModelPayment?.transact?.klptransid}}</ion-badge>    
+      <div class="my-container-label">
+        <ion-label class="my-label-title">Id Txn klispay:</ion-label>  
+      </div>     
+    </ion-item>
+    <div [hidden]="transHideMe">
+      <ion-item button  class="bga" *ngIf="this.contribPayment?.transactModelPayment?.transact?.modptransid">
+        <ion-badge  color="gklispay" slot="end">{{this.contribPayment?.transactModelPayment?.transact?.modptransid}}</ion-badge>    
+          <div class="my-container-label">
+             <ion-label class="my-label-title">Id Txn Operateur:</ion-label>
+          </div>     
+       </ion-item>
+       <ion-item button  class="bga" *ngIf="this.contribPayment?.transactModelPayment?.transact?.qtcnum">
+        <ion-badge  color="gklispay" slot="end">{{this.contribPayment?.transactModelPayment?.transact?.qtcnum}}</ion-badge>    
+          <div class="my-container-label">
+             <ion-label class="my-label-title">N°Qtc:</ion-label>
+          </div>     
+       </ion-item>
+    </div>
+  </ion-toolbar>
+   </div>
+  </ion-content>
+  <!--end content-->
+  <!--//////////////////////////////////////////////////////////////////////-->
+  <!--start footer-->
+  <ion-footer class="ion-text-center">
+    <!--start footer toolbar-->
+    <ion-toolbar color="gklispay"> 
+        <ion-button color="rklispay" size="small" (click)="payment()" [disabled] ="btnPayer">
+          <ion-icon slot="start" name="cash"></ion-icon>
+          PAYER</ion-button>
+        <ion-button color="rklispay" size="small" (click)="impression()" [disabled] ="btnImprimer">
+          <ion-icon slot="start" name="print"></ion-icon>
+          Imprimer</ion-button>
+        <ion-button color="rklispay" size="small" [disabled] ="btnNouveau" (click)="alertRecherche()">
+          <ion-icon slot="start" name="add"></ion-icon>
+          Nouveau</ion-button>
+    </ion-toolbar>
+    <!--end footer toolbar-->
+  </ion-footer>
+  <!--end footer-->

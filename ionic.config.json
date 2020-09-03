@@ -1,0 +1,8 @@
+{
+  "name": "klisPay",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

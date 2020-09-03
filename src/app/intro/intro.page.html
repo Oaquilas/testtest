@@ -1,0 +1,74 @@
+<ion-header translucent>
+  <ion-toolbar class="ion-text-center" color="gklispay">
+    <ion-title class="txte" style="color: white;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; K'LISPAY
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="exitApp()">
+        <ion-icon slot="end" name="log-out" style="font-size: 2em;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen translucent>
+  <section class="ion-text-center">
+   <!--
+      <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <img src="../assets/logoklp.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img src="../assets/logoklp.jpg">
+      </ion-slide>
+      <ion-slide>
+        <img src="../assets/logoklp.jpg">
+      </ion-slide>
+    </ion-slides>     
+   -->
+      
+    <div style="background: aquamarine;">
+      <h2 style="font-size:1.4em" no-margin class="txte">Bienvenue dans K'LISPAY</h2>
+    <h3 class="txt"><small>By NTA-TECH</small></h3>
+    </div>
+  </section>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card button class="ion-text-center" color="gklispay" (click)="goToEnrollemnt()">
+          <ion-icon name="person" style="font-size: 5em;"></ion-icon>
+          <h2 class="txt">Enrôlement</h2>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card button class="ion-text-center" color="gklispay" (click)="goToPaiement()">
+          <ion-icon name="cash" style="font-size: 5em;"></ion-icon>
+          <h2 class="txt">Recouvrement</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card button class="ion-text-center" color="gklispay"  (click)="goToEticketing()">
+          <ion-icon name="journal" style="font-size: 5em;"></ion-icon>
+          <h2 class="txt">Collecte</h2>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card button class="ion-text-center" color="gklispay" >
+          <ion-icon name="settings" style="font-size: 5em;"></ion-icon>
+          <h2 class="txt">Paramètres</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>  
+    <ion-button color="gklispay" expand="full" (click)="openModalAgent()">
+      <ion-icon slot="start" name="analytics"></ion-icon>
+      Statistiques Agent</ion-button> 
+  </ion-grid>
+</ion-content>  
+  
+<ion-footer>
+  <ion-toolbar class="ion-text-center" color="gklispay">
+      <ion-text>&copy;2020 K'LISPAY BY NTA-TECHNOLOGIE</ion-text> 
+  </ion-toolbar>
+</ion-footer>

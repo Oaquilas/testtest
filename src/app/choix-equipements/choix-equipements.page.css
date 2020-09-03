@@ -1,0 +1,10 @@
+ion-button {
+  --background:rgb(0,100,100);
+}
+
+.resteChoix {
+  background-color: lightgreen;
+  height: 100%;
+  width: 100%;
+}
+/*# sourceMappingURL=choix-equipements.page.css.map */

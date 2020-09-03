@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "KlisPay",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 12000
+    }
+  },
+  "cordova": {}
+}

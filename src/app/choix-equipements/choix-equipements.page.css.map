@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,UAAU,CACV;EACI,YAAY,CAAA,cAAC;CAChB;;AAED,AAAA,WAAW,CACX;EACI,gBAAgB,EAAE,UAAgB;EAClC,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "choix-equipements.page.scss"
+    ],
+    "names": [],
+    "file": "choix-equipements.page.css"
+}
